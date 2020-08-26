@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct ATP_ClientApp: App {
+struct SODAClientApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

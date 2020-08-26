@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02E2525A24F66FAC00A9DB08 /* ATP_ClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524724F66FA700A9DB08 /* ATP_ClientApp.swift */; };
-		02E2525B24F66FAC00A9DB08 /* ATP_ClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524724F66FA700A9DB08 /* ATP_ClientApp.swift */; };
+		02801C1024F69E3000D609CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02801C0F24F69E3000D609CC /* Model.swift */; };
+		02801C1124F69E3000D609CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02801C0F24F69E3000D609CC /* Model.swift */; };
+		02E2525A24F66FAC00A9DB08 /* SODAClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524724F66FA700A9DB08 /* SODAClientApp.swift */; };
+		02E2525B24F66FAC00A9DB08 /* SODAClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524724F66FA700A9DB08 /* SODAClientApp.swift */; };
 		02E2525C24F66FAC00A9DB08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524824F66FA700A9DB08 /* ContentView.swift */; };
 		02E2525D24F66FAC00A9DB08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524824F66FA700A9DB08 /* ContentView.swift */; };
 		02E2525E24F66FAC00A9DB08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E2524924F66FAC00A9DB08 /* Assets.xcassets */; };
 		02E2525F24F66FAC00A9DB08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E2524924F66FAC00A9DB08 /* Assets.xcassets */; };
+		02E2526924F6703100A9DB08 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2526824F6703100A9DB08 /* Agent.swift */; };
+		02E2526A24F6703100A9DB08 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2526824F6703100A9DB08 /* Agent.swift */; };
+		02E2526D24F6716D00A9DB08 /* SODA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2526C24F6716D00A9DB08 /* SODA.swift */; };
+		02E2526E24F6716D00A9DB08 /* SODA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2526C24F6716D00A9DB08 /* SODA.swift */; };
+		02E2527024F6914B00A9DB08 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2526F24F6914B00A9DB08 /* DataStore.swift */; };
+		02E2527124F6914B00A9DB08 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2526F24F6914B00A9DB08 /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02E2524724F66FA700A9DB08 /* ATP_ClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATP_ClientApp.swift; sourceTree = "<group>"; };
+		02801C0F24F69E3000D609CC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		02E2524724F66FA700A9DB08 /* SODAClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SODAClientApp.swift; sourceTree = "<group>"; };
 		02E2524824F66FA700A9DB08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		02E2524924F66FAC00A9DB08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		02E2524E24F66FAC00A9DB08 /* ATP Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ATP Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		02E2524E24F66FAC00A9DB08 /* SODA Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SODA Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E2525124F66FAC00A9DB08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		02E2525624F66FAC00A9DB08 /* ATP Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ATP Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		02E2525624F66FAC00A9DB08 /* SODA Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SODA Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E2525824F66FAC00A9DB08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02E2525924F66FAC00A9DB08 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		02E2526824F6703100A9DB08 /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		02E2526C24F6716D00A9DB08 /* SODA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SODA.swift; sourceTree = "<group>"; };
+		02E2526F24F6914B00A9DB08 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +56,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02801C0E24F69E1300D609CC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				02E2526824F6703100A9DB08 /* Agent.swift */,
+				02E2526C24F6716D00A9DB08 /* SODA.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		02801C1224F69E7D00D609CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02E2524724F66FA700A9DB08 /* SODAClientApp.swift */,
+				02E2524824F66FA700A9DB08 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		02E2524124F66FA700A9DB08 = {
 			isa = PBXGroup;
 			children = (
@@ -57,8 +87,9 @@
 		02E2524624F66FA700A9DB08 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				02E2524724F66FA700A9DB08 /* ATP_ClientApp.swift */,
-				02E2524824F66FA700A9DB08 /* ContentView.swift */,
+				02801C0E24F69E1300D609CC /* API */,
+				02E2526B24F6712600A9DB08 /* Model */,
+				02801C1224F69E7D00D609CC /* Views */,
 				02E2524924F66FAC00A9DB08 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -67,8 +98,8 @@
 		02E2524F24F66FAC00A9DB08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				02E2524E24F66FAC00A9DB08 /* ATP Client.app */,
-				02E2525624F66FAC00A9DB08 /* ATP Client.app */,
+				02E2524E24F66FAC00A9DB08 /* SODA Client.app */,
+				02E2525624F66FAC00A9DB08 /* SODA Client.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,12 +121,21 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		02E2526B24F6712600A9DB08 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02E2526F24F6914B00A9DB08 /* DataStore.swift */,
+				02801C0F24F69E3000D609CC /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		02E2524D24F66FAC00A9DB08 /* ATP Client (iOS) */ = {
+		02E2524D24F66FAC00A9DB08 /* SODA Client (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 02E2526224F66FAC00A9DB08 /* Build configuration list for PBXNativeTarget "ATP Client (iOS)" */;
+			buildConfigurationList = 02E2526224F66FAC00A9DB08 /* Build configuration list for PBXNativeTarget "SODA Client (iOS)" */;
 			buildPhases = (
 				02E2524A24F66FAC00A9DB08 /* Sources */,
 				02E2524B24F66FAC00A9DB08 /* Frameworks */,
@@ -105,14 +145,14 @@
 			);
 			dependencies = (
 			);
-			name = "ATP Client (iOS)";
+			name = "SODA Client (iOS)";
 			productName = "ATP Client (iOS)";
-			productReference = 02E2524E24F66FAC00A9DB08 /* ATP Client.app */;
+			productReference = 02E2524E24F66FAC00A9DB08 /* SODA Client.app */;
 			productType = "com.apple.product-type.application";
 		};
-		02E2525524F66FAC00A9DB08 /* ATP Client (macOS) */ = {
+		02E2525524F66FAC00A9DB08 /* SODA Client (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 02E2526524F66FAC00A9DB08 /* Build configuration list for PBXNativeTarget "ATP Client (macOS)" */;
+			buildConfigurationList = 02E2526524F66FAC00A9DB08 /* Build configuration list for PBXNativeTarget "SODA Client (macOS)" */;
 			buildPhases = (
 				02E2525224F66FAC00A9DB08 /* Sources */,
 				02E2525324F66FAC00A9DB08 /* Frameworks */,
@@ -122,9 +162,9 @@
 			);
 			dependencies = (
 			);
-			name = "ATP Client (macOS)";
+			name = "SODA Client (macOS)";
 			productName = "ATP Client (macOS)";
-			productReference = 02E2525624F66FAC00A9DB08 /* ATP Client.app */;
+			productReference = 02E2525624F66FAC00A9DB08 /* SODA Client.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 02E2524524F66FA700A9DB08 /* Build configuration list for PBXProject "ATP Client" */;
+			buildConfigurationList = 02E2524524F66FA700A9DB08 /* Build configuration list for PBXProject "SODA Client" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -157,8 +197,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				02E2524D24F66FAC00A9DB08 /* ATP Client (iOS) */,
-				02E2525524F66FAC00A9DB08 /* ATP Client (macOS) */,
+				02E2524D24F66FAC00A9DB08 /* SODA Client (iOS) */,
+				02E2525524F66FAC00A9DB08 /* SODA Client (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -187,8 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E2527024F6914B00A9DB08 /* DataStore.swift in Sources */,
+				02E2526924F6703100A9DB08 /* Agent.swift in Sources */,
 				02E2525C24F66FAC00A9DB08 /* ContentView.swift in Sources */,
-				02E2525A24F66FAC00A9DB08 /* ATP_ClientApp.swift in Sources */,
+				02801C1024F69E3000D609CC /* Model.swift in Sources */,
+				02E2526D24F6716D00A9DB08 /* SODA.swift in Sources */,
+				02E2525A24F66FAC00A9DB08 /* SODAClientApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,8 +240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E2527124F6914B00A9DB08 /* DataStore.swift in Sources */,
+				02E2526A24F6703100A9DB08 /* Agent.swift in Sources */,
 				02E2525D24F66FAC00A9DB08 /* ContentView.swift in Sources */,
-				02E2525B24F66FAC00A9DB08 /* ATP_ClientApp.swift in Sources */,
+				02801C1124F69E3000D609CC /* Model.swift in Sources */,
+				02E2526E24F6716D00A9DB08 /* SODA.swift in Sources */,
+				02E2525B24F66FAC00A9DB08 /* SODAClientApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,8 +377,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "bf.ATP-Client";
-				PRODUCT_NAME = "ATP Client";
+				PRODUCT_BUNDLE_IDENTIFIER = "bf.SODA-Client";
+				PRODUCT_NAME = "SODA Client";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -351,8 +399,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "bf.ATP-Client";
-				PRODUCT_NAME = "ATP Client";
+				PRODUCT_BUNDLE_IDENTIFIER = "bf.SODA-Client";
+				PRODUCT_NAME = "SODA Client";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -377,8 +425,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "bf.ATP-Client";
-				PRODUCT_NAME = "ATP Client";
+				PRODUCT_BUNDLE_IDENTIFIER = "bf.SODA-Client";
+				PRODUCT_NAME = "SODA Client";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -401,8 +449,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "bf.ATP-Client";
-				PRODUCT_NAME = "ATP Client";
+				PRODUCT_BUNDLE_IDENTIFIER = "bf.SODA-Client";
+				PRODUCT_NAME = "SODA Client";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -411,7 +459,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		02E2524524F66FA700A9DB08 /* Build configuration list for PBXProject "ATP Client" */ = {
+		02E2524524F66FA700A9DB08 /* Build configuration list for PBXProject "SODA Client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				02E2526024F66FAC00A9DB08 /* Debug */,
@@ -420,7 +468,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		02E2526224F66FAC00A9DB08 /* Build configuration list for PBXNativeTarget "ATP Client (iOS)" */ = {
+		02E2526224F66FAC00A9DB08 /* Build configuration list for PBXNativeTarget "SODA Client (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				02E2526324F66FAC00A9DB08 /* Debug */,
@@ -429,7 +477,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		02E2526524F66FAC00A9DB08 /* Build configuration list for PBXNativeTarget "ATP Client (macOS)" */ = {
+		02E2526524F66FAC00A9DB08 /* Build configuration list for PBXNativeTarget "SODA Client (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				02E2526624F66FAC00A9DB08 /* Debug */,
