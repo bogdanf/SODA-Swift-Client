@@ -3,7 +3,7 @@
 This repository ilustrate [my article][1] about how to integrate a modern Swift app with a cloud Oracle Autonomous Database storing JSON documents.
 To fully understand what's going on in the code and properly setup the database, please [read the full article][1]
 
-![header](https://miro.medium.com/max/4000/1*ZbxoxPQztVhvebakr49EpA.png)
+![header](https://miro.medium.com/max/600/1*gf4diWCZyxAHhJHQ16AQBQ.png)
 
 ## Technology
 
