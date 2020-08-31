@@ -22,8 +22,8 @@ enum SODA {
     }
     
     static let agent = Agent()
-    static let endpoint = URL(string: "https://RAYM56Z0MUISRHO-DBJSON1.adb.eu-frankfurt-1.oraclecloudapps.com/ords/admin/soda/latest")!
-    static let authorization = "ADMIN:Bf24011972!@"
+    static let endpoint = URL(string: "https://[YOUR API ENDPOINT].oraclecloudapps.com/ords/admin/soda/latest")!
+    static let authorization = "ADMIN:[YOUR PASSWORD]]"
 }
 
 extension SODA {
