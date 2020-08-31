@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "02E2524D24F66FAC00A9DB08"
-               BuildableName = "ATP Client.app"
+               BuildableName = "SODA Client.app"
                BlueprintName = "SODA Client (iOS)"
                ReferencedContainer = "container:SODA Client.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "02E2524D24F66FAC00A9DB08"
-            BuildableName = "ATP Client.app"
+            BuildableName = "SODA Client.app"
             BlueprintName = "SODA Client (iOS)"
             ReferencedContainer = "container:SODA Client.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "02E2524D24F66FAC00A9DB08"
-            BuildableName = "ATP Client.app"
+            BuildableName = "SODA Client.app"
             BlueprintName = "SODA Client (iOS)"
             ReferencedContainer = "container:SODA Client.xcodeproj">
          </BuildableReference>
