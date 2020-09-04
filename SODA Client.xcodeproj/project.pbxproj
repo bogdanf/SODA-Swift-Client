@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0203B42B24FE398F0063A2DA /* FruitView.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0203B42A24FE398F0063A2DA /* FruitView.model.swift */; };
+		0203B42C24FE398F0063A2DA /* FruitView.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0203B42A24FE398F0063A2DA /* FruitView.model.swift */; };
 		02801C1024F69E3000D609CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02801C0F24F69E3000D609CC /* Model.swift */; };
 		02801C1124F69E3000D609CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02801C0F24F69E3000D609CC /* Model.swift */; };
+		02CE668124FD3AAA000BF7E8 /* FruitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CE668024FD3AAA000BF7E8 /* FruitView.swift */; };
+		02CE668224FD3AAA000BF7E8 /* FruitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CE668024FD3AAA000BF7E8 /* FruitView.swift */; };
 		02E2525A24F66FAC00A9DB08 /* SODAClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524724F66FA700A9DB08 /* SODAClientApp.swift */; };
 		02E2525B24F66FAC00A9DB08 /* SODAClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524724F66FA700A9DB08 /* SODAClientApp.swift */; };
 		02E2525C24F66FAC00A9DB08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2524824F66FA700A9DB08 /* ContentView.swift */; };
@@ -24,7 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0203B42A24FE398F0063A2DA /* FruitView.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitView.model.swift; sourceTree = "<group>"; };
 		02801C0F24F69E3000D609CC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		02CE668024FD3AAA000BF7E8 /* FruitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitView.swift; sourceTree = "<group>"; };
 		02E2524724F66FA700A9DB08 /* SODAClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SODAClientApp.swift; sourceTree = "<group>"; };
 		02E2524824F66FA700A9DB08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		02E2524924F66FAC00A9DB08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +76,8 @@
 			children = (
 				02E2524724F66FA700A9DB08 /* SODAClientApp.swift */,
 				02E2524824F66FA700A9DB08 /* ContentView.swift */,
+				02CE668024FD3AAA000BF7E8 /* FruitView.swift */,
+				0203B42A24FE398F0063A2DA /* FruitView.model.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,8 +239,10 @@
 				02E2526924F6703100A9DB08 /* Agent.swift in Sources */,
 				02E2525C24F66FAC00A9DB08 /* ContentView.swift in Sources */,
 				02801C1024F69E3000D609CC /* Model.swift in Sources */,
+				0203B42B24FE398F0063A2DA /* FruitView.model.swift in Sources */,
 				02E2526D24F6716D00A9DB08 /* SODA.swift in Sources */,
 				02E2525A24F66FAC00A9DB08 /* SODAClientApp.swift in Sources */,
+				02CE668124FD3AAA000BF7E8 /* FruitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,8 +254,10 @@
 				02E2526A24F6703100A9DB08 /* Agent.swift in Sources */,
 				02E2525D24F66FAC00A9DB08 /* ContentView.swift in Sources */,
 				02801C1124F69E3000D609CC /* Model.swift in Sources */,
+				0203B42C24FE398F0063A2DA /* FruitView.model.swift in Sources */,
 				02E2526E24F6716D00A9DB08 /* SODA.swift in Sources */,
 				02E2525B24F66FAC00A9DB08 /* SODAClientApp.swift in Sources */,
+				02CE668224FD3AAA000BF7E8 /* FruitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

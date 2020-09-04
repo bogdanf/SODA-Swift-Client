@@ -9,16 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
    
-    @StateObject var dataStore = DataStore()
+    @StateObject var dataStore = DataStore.shared
        
     var body: some View {
-        Text("Fruits")
-            .font(.largeTitle)
-        
-        List(dataStore.fruits) { fruit in
-            Text("\(fruit.value.count)")
-                + Text(" \(fruit.value.color ?? "colorless")")
-                + Text(" \(fruit.value.name)s").font(Font.body.bold())
+        NavigationView {
+            List(dataStore.fruits) { fruit in
+                NavigationLink(destination: FruitView(fruit: fruit) ) {
+                    fruitRow(fruit)
+                }
+            }
+            .environmentObject(dataStore)
+            .navigationBarTitle("Fruits")
         }
+    }
+    
+    private func fruitRow(_ fruit: SODA.Item<Fruit>) -> some View {
+        Text("\(fruit.value.count)") +
+            Text(" \(fruit.value.color ?? "colorless")") +
+            Text(" \(fruit.value.name)s").font(Font.body.bold())
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

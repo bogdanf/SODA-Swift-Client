@@ -11,7 +11,9 @@ import Combine
 class DataStore: ObservableObject {
     
     @Published var fruits = [SODA.Item<Fruit>]()
+    
     private var tokens = Set<AnyCancellable>()
+    static let shared: DataStore = DataStore()
     
     init() {
         retrieveAllFruits()
@@ -24,5 +26,17 @@ class DataStore: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: \.fruits, on: self)
             .store(in: &tokens)
+    }
+    
+    func retrieveFruit(with id: String) -> AnyPublisher<Fruit, Error> {
+        SODA.document(id: id, in: "fruit")
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK:- Helper functions
+    func update(fruit: SODA.Item<Fruit>, with newValue: Fruit) {
+        guard let idx = fruits.firstIndex(where: { $0.id == fruit.id }) else { return }
+        fruits[idx].value = newValue
     }
 }

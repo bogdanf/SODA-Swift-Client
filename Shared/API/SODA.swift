@@ -18,12 +18,12 @@ enum SODA {
 
     struct Item<T: Codable>: Codable, Identifiable {
         let id, etag, lastModified, created: String
-        let value: T
+        var value: T
     }
     
     static let agent = Agent()
-    static let endpoint = URL(string: "https://[YOUR API ENDPOINT].oraclecloudapps.com/ords/admin/soda/latest")!
-    static let authorization = "ADMIN:[YOUR PASSWORD]]"
+    static let endpoint = URL(string: "https://RAYM56Z0MUISRHO-DBJSON1.adb.eu-frankfurt-1.oraclecloudapps.com/ords/admin/soda/latest")!
+    static let authorization = "ADMIN:Bf24011972!@"
 }
 
 extension SODA {
@@ -32,6 +32,21 @@ extension SODA {
         let loginData = SODA.authorization.data(using: String.Encoding.utf8)!.base64EncodedString()
         
         var request = URLRequest(url: endpoint.appendingPathComponent("\(collection)"))
+        request.setValue("Basic \(loginData)", forHTTPHeaderField: "Authorization")
+        
+        return agent.run(request)
+            .map(\.value)
+            .eraseToAnyPublisher()
+    }
+    
+    static func document<T: Decodable>(id: String, in collection: String) -> AnyPublisher<T, Error> {
+        let loginData = SODA.authorization.data(using: String.Encoding.utf8)!.base64EncodedString()
+        
+        let requestURL = endpoint
+            .appendingPathComponent("\(collection)")
+            .appendingPathComponent("\(id)")
+        
+        var request = URLRequest(url: requestURL)
         request.setValue("Basic \(loginData)", forHTTPHeaderField: "Authorization")
         
         return agent.run(request)
