@@ -25,8 +25,20 @@ extension FruitView {
             DataStore.shared.retrieveFruit(with: fruit.id)
                 .assertNoFailure()
                 .sink {
-                    DataStore.shared.update(fruit: self.fruit, with: $0)
+                    DataStore.shared.modelUpdate(fruit: self.fruit, with: $0)
                     self.isLoading = false
+                }
+                .store(in: &tokens)
+        }
+        
+        func updateFruitOnServer() {
+            isLoading = true
+            
+            SODA.update(id: fruit.id, collection: "fruit", with: fruit.value)
+                .assertNoFailure()
+                .sink {
+                    self.isLoading = false
+                    DataStore.shared.modelUpdate(fruit: self.fruit, with: self.fruit.value)
                 }
                 .store(in: &tokens)
         }

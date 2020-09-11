@@ -20,6 +20,13 @@ struct ContentView: View {
             }
             .environmentObject(dataStore)
             .navigationBarTitle("Fruits")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: dataStore.retrieveAllFruits ) {
+                        Label("Refresh", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+            }
         }
     }
     

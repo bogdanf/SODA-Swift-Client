@@ -10,39 +10,86 @@ import SwiftUI
 struct FruitView: View {
     
     @ObservedObject var model: ViewModel
+    @State private var isEditing = false
     
     init(fruit: SODA.Item<Fruit>) {
         self.model = ViewModel(fruit: fruit)
     }
     
+        
+    
     var body: some View {
         Form {
-            HStack {
-                Text("Name").font(Font.body.bold())
-                Spacer()
-                Text(" \(model.fruit.value.name)")
-            }
-            HStack {
-                Text("Count").font(Font.body.bold())
-                Spacer()
-                Text(" \(model.fruit.value.count)")
-            }
-            HStack {
-                Text("Color").font(Font.body.bold())
-                Spacer()
-                Text(" \(model.fruit.value.color ?? "colorless")")
+            nameRow()
+            countRow()
+            colorRow()
+            
+            Section {
+                Button(action: model.refreshFruit) {
+                    Label("Refresh", systemImage: "arrow.up.arrow.down")
+                }
+                .disabled(model.isLoading || isEditing)
             }
         }
         .navigationTitle("Fruit details")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: model.refreshFruit ) {
-                    Image(systemName: "arrow.up.arrow.down")
+                Button(isEditing ? "Save" : "Edit") {
+                    if isEditing {
+                        model.updateFruitOnServer()
+                    }
+                    isEditing.toggle()
                 }
-                .disabled(model.isLoading)
             }
         }
     }
+    
+    private func nameRow() -> some View {
+        HStack {
+            Text("Name").font(Font.body.bold())
+            Spacer()
+            if isEditing {
+                TextField("name", text: $model.fruit.value.name)
+                    .multilineTextAlignment(.trailing)
+            } else {
+                Text("\(model.fruit.value.name)")
+            }
+        }
+    }
+    
+    private func countRow() -> some View {
+        HStack {
+            Text("Count").font(Font.body.bold())
+            Spacer()
+            if isEditing {
+                TextField("item count", text: Binding(
+                    get: { String(model.fruit.value.count) },
+                    set: { model.fruit.value.count = Int($0) ?? 0 })
+                )
+                .multilineTextAlignment(.trailing)
+                .keyboardType(.numberPad)
+            } else {
+                Text("\(model.fruit.value.count)")
+            }
+        }
+    }
+    
+    private func colorRow() -> some View {
+        HStack {
+            Text("Color").font(Font.body.bold())
+            Spacer()
+            if isEditing {
+                TextField("color", text: Binding(
+                            get: { String(model.fruit.value.color ?? "") },
+                            set: { model.fruit.value.color = $0 == "" ? nil : $0 })
+                )
+                .multilineTextAlignment(.trailing)
+            } else {
+                Text(" \(model.fruit.value.color ?? "colorless")")
+            }
+        }
+    }
+    
 }
 
 struct FruitView_Previews: PreviewProvider {
@@ -58,5 +105,6 @@ struct FruitView_Previews: PreviewProvider {
                 )
             )
         }
+        .environment(\.editMode, Binding.constant(.active))
     }
 }

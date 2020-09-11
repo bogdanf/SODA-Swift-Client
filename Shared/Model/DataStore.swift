@@ -22,7 +22,7 @@ class DataStore: ObservableObject {
     func retrieveAllFruits() {
         SODA.documents(collection: "fruit")
             .map(\.items)
-            .assertNoFailure() // Let's ignore the errors for now
+            .assertNoFailure("Error retrieving documents") // Let's ignore the errors for now
             .receive(on: DispatchQueue.main)
             .assign(to: \.fruits, on: self)
             .store(in: &tokens)
@@ -34,8 +34,9 @@ class DataStore: ObservableObject {
             .eraseToAnyPublisher()
     }
     
+    
     // MARK:- Helper functions
-    func update(fruit: SODA.Item<Fruit>, with newValue: Fruit) {
+    func modelUpdate(fruit: SODA.Item<Fruit>, with newValue: Fruit) {
         guard let idx = fruits.firstIndex(where: { $0.id == fruit.id }) else { return }
         fruits[idx].value = newValue
     }

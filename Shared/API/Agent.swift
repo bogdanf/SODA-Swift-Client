@@ -24,4 +24,19 @@ struct Agent {
             }
             .eraseToAnyPublisher()
     }
+    
+    func run(_ request: URLRequest) -> AnyPublisher<Void, Error> {
+        URLSession.shared
+            .dataTaskPublisher(for: request)
+            .tryMap { result -> Void in
+                guard
+                    let httpResponse = result.response as? HTTPURLResponse,
+                    httpResponse.statusCode == 200 else
+                {
+                    throw URLError(.badServerResponse)
+                }
+                return ()
+            }
+            .eraseToAnyPublisher()
+    }
 }

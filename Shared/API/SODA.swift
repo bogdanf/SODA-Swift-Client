@@ -53,4 +53,27 @@ extension SODA {
             .map(\.value)
             .eraseToAnyPublisher()
     }
+    
+    static func update<T: Encodable>(id: String, collection: String, with entity: T) -> AnyPublisher<Void, Error> {
+        let loginData = SODA.authorization.data(using: String.Encoding.utf8)!.base64EncodedString()
+        
+        let requestURL = endpoint
+            .appendingPathComponent("\(collection)")
+            .appendingPathComponent("\(id)")
+        
+        var request = URLRequest(url: requestURL)
+        request.setValue("Basic \(loginData)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "PUT"
+        
+        if let json = try? JSONEncoder().encode(entity) {
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            request.httpBody = json
+        }
+
+        return agent.run(request)
+            .map { () } // converting to Void
+            .eraseToAnyPublisher()
+    }
 }
