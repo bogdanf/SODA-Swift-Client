@@ -16,8 +16,6 @@ struct FruitView: View {
         self.model = ViewModel(fruit: fruit)
     }
     
-        
-    
     var body: some View {
         Form {
             nameRow()
@@ -28,7 +26,7 @@ struct FruitView: View {
                 Button(action: model.refreshFruit) {
                     Label("Refresh", systemImage: "arrow.up.arrow.down")
                 }
-                .disabled(model.isLoading || isEditing)
+                .disabled(DataStore.shared.isLoading || isEditing)
             }
         }
         .navigationTitle("Fruit details")

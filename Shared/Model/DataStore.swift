@@ -11,20 +11,29 @@ import Combine
 class DataStore: ObservableObject {
     
     @Published var fruits = [SODA.Item<Fruit>]()
+    @Published var isLoading = false
     
-    private var tokens = Set<AnyCancellable>()
     static let shared: DataStore = DataStore()
+    private var tokens = Set<AnyCancellable>()
     
     init() {
         retrieveAllFruits()
     }
     
     func retrieveAllFruits() {
-        SODA.documents(collection: "fruit")
+        guard !isLoading else { return }
+        
+        isLoading = true
+        fruits = []
+        
+        SODA.documents(collection: "fruit", pageSize: 100)
             .map(\.items)
-            .assertNoFailure("Error retrieving documents") // Let's ignore the errors for now
             .receive(on: DispatchQueue.main)
-            .assign(to: \.fruits, on: self)
+            .sink { _ in
+                self.isLoading = false
+            } receiveValue: { (records: [SODA.Item<Fruit>]) in
+                self.fruits.append(contentsOf: records)
+            }
             .store(in: &tokens)
     }
     

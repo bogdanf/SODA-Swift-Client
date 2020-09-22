@@ -11,7 +11,6 @@ import Combine
 extension FruitView {
     class ViewModel: ObservableObject {
         @Published var fruit: SODA.Item<Fruit>
-        @Published var isLoading = false
         
         private var tokens = Set<AnyCancellable>()
         
@@ -20,24 +19,25 @@ extension FruitView {
         }
         
         func refreshFruit() {
-            isLoading = true
+            DataStore.shared.isLoading = true
             
             DataStore.shared.retrieveFruit(with: fruit.id)
                 .assertNoFailure()
                 .sink {
                     DataStore.shared.modelUpdate(fruit: self.fruit, with: $0)
-                    self.isLoading = false
+                    DataStore.shared.isLoading = false
                 }
                 .store(in: &tokens)
         }
         
         func updateFruitOnServer() {
-            isLoading = true
+            DataStore.shared.isLoading = true
             
             SODA.update(id: fruit.id, collection: "fruit", with: fruit.value)
                 .assertNoFailure()
+                .receive(on: DispatchQueue.main)
                 .sink {
-                    self.isLoading = false
+                    DataStore.shared.isLoading = false
                     DataStore.shared.modelUpdate(fruit: self.fruit, with: self.fruit.value)
                 }
                 .store(in: &tokens)

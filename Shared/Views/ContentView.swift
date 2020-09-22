@@ -18,13 +18,13 @@ struct ContentView: View {
                     fruitRow(fruit)
                 }
             }
-            .environmentObject(dataStore)
             .navigationBarTitle("Fruits")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: dataStore.retrieveAllFruits ) {
                         Label("Refresh", systemImage: "arrow.up.arrow.down")
                     }
+                    .disabled(DataStore.shared.isLoading)
                 }
             }
         }
