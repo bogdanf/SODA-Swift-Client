@@ -13,13 +13,13 @@ enum SODA {
     struct Collection<T: Codable>: Codable {
         let items: [Item<T>]
         let hasMore: Bool
-        let count, offset, limit: Int
-        let totalResults: Int?
+        let count: Int
+        let offset, limit, totalResults: Int?
     }
 
     struct Item<T: Codable>: Codable, Identifiable {
         let id, etag, lastModified, created: String
-        var value: T
+        var value: T! // should be optional to deal with API responses not including the payload
     }
     
     static let agent = Agent()
@@ -41,8 +41,8 @@ extension SODA {
                 agent.run($0)
                     .handleEvents(receiveOutput: {
                         if $0.value.hasMore {
-                            let offset = $0.value.offset + $0.value.count
-                            let nextRequest = SODARequest("\(collection)", parameters: ["limit" : "\($0.value.limit)", "offset": "\(offset)"])
+                            let offset = $0.value.offset! + $0.value.count
+                            let nextRequest = SODARequest("\(collection)", parameters: ["limit" : "\($0.value.limit!)", "offset": "\(offset)"])
                             urlPublisher.send(nextRequest)
                         } else {
                             urlPublisher.send(completion: .finished)
@@ -75,6 +75,30 @@ extension SODA {
 
         return agent.run(request)
             .map { () } // converting to Void
+            .eraseToAnyPublisher()
+    }
+    
+    /// Add one document with the content of entity
+    static func add<T: Codable>(collection: String, with entity: T) -> AnyPublisher<SODA.Item<T>, Error> {
+        var request = SODARequest("\(collection)")
+        request.httpMethod = "POST"
+        
+        if let json = try? JSONEncoder().encode(entity) {
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = json
+        }
+
+        return agent.run(request)
+            .map (\.value)
+            .tryMap { (added: SODA.Collection<T>) -> SODA.Item<T> in
+                // the incoming items collections (actually only one item, the one we added) contains only the meta variables and not the actual payload of the document
+                // hopefully, the payload is the entity param, so we add it back
+                var newItem = added.items.first!
+                newItem.value = entity
+                
+                return newItem
+            }
             .eraseToAnyPublisher()
     }
     

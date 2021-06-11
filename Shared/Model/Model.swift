@@ -8,7 +8,7 @@
 import Foundation
 
 struct Fruit: Codable {
-    var name: String
-    var count: Int
+    var name: String = ""
+    var count: Int = 0
     var color: String?
 }

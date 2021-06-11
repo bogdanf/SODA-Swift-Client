@@ -9,11 +9,16 @@ import SwiftUI
 
 struct FruitView: View {
     
-    @ObservedObject var model: ViewModel
-    @State private var isEditing = false
+    @EnvironmentObject private var dataStore: DataStore
     
-    init(fruit: SODA.Item<Fruit>) {
-        self.model = ViewModel(fruit: fruit)
+    @State private var fruit: SODA.Item<Fruit>
+    @State private var isEditing: Bool
+    
+    init(fruit: SODA.Item<Fruit>?) {
+        self.fruit = fruit ?? SODA.Item(id: "", etag: "", lastModified: "", created: "", value: Fruit())
+        
+        // Entering Edit mode if it's a new Fruit
+        isEditing = fruit == nil
     }
     
     var body: some View {
@@ -23,10 +28,12 @@ struct FruitView: View {
             colorRow()
             
             Section {
-                Button(action: model.refreshFruit) {
+                Button() {
+                    async { fruit.value = await dataStore.refresh(fruit: fruit) }
+                } label: {
                     Label("Refresh", systemImage: "arrow.up.arrow.down")
                 }
-                .disabled(DataStore.shared.isLoading || isEditing)
+                .disabled(dataStore.isLoading || isEditing)
             }
         }
         .navigationTitle("Fruit details")
@@ -34,10 +41,14 @@ struct FruitView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(isEditing ? "Save" : "Edit") {
                     if isEditing {
-                        model.updateFruitOnServer()
+                        async {
+                            fruit = await dataStore.addOrUpdate(fruit: fruit)
+                            isEditing = false
+                        }
+                    } else {
+                        isEditing = true
                     }
-                    isEditing.toggle()
-                }
+                }.disabled(dataStore.isLoading)
             }
         }
     }
@@ -47,10 +58,10 @@ struct FruitView: View {
             Text("Name").font(Font.body.bold())
             Spacer()
             if isEditing {
-                TextField("name", text: $model.fruit.value.name)
+                TextField("name", text: $fruit.value.name)
                     .multilineTextAlignment(.trailing)
             } else {
-                Text("\(model.fruit.value.name)")
+                Text("\(fruit.value.name)")
             }
         }
     }
@@ -61,13 +72,13 @@ struct FruitView: View {
             Spacer()
             if isEditing {
                 TextField("item count", text: Binding(
-                    get: { String(model.fruit.value.count) },
-                    set: { model.fruit.value.count = Int($0) ?? 0 })
+                    get: { String(fruit.value.count) },
+                    set: { fruit.value.count = Int($0) ?? 0 })
                 )
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.numberPad)
             } else {
-                Text("\(model.fruit.value.count)")
+                Text("\(fruit.value.count)")
             }
         }
     }
@@ -78,16 +89,15 @@ struct FruitView: View {
             Spacer()
             if isEditing {
                 TextField("color", text: Binding(
-                            get: { String(model.fruit.value.color ?? "") },
-                            set: { model.fruit.value.color = $0 == "" ? nil : $0 })
+                            get: { String(fruit.value.color ?? "") },
+                            set: { fruit.value.color = $0 == "" ? nil : $0 })
                 )
                 .multilineTextAlignment(.trailing)
             } else {
-                Text(" \(model.fruit.value.color ?? "colorless")")
+                Text(" \(fruit.value.color ?? "colorless")")
             }
         }
     }
-    
 }
 
 struct FruitView_Previews: PreviewProvider {
@@ -104,5 +114,6 @@ struct FruitView_Previews: PreviewProvider {
             )
         }
         .environment(\.editMode, Binding.constant(.active))
+        .environmentObject(DataStore())
     }
 }

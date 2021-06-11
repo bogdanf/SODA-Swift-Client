@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
    
-    @StateObject var dataStore = DataStore.shared
+    @StateObject var dataStore = DataStore()
        
     var body: some View {
         NavigationView {
@@ -19,14 +19,20 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Fruits")
+            .listStyle(.plain)
+            .refreshable { dataStore.retrieveAllFruits() }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: dataStore.retrieveAllFruits ) {
-                        Label("Refresh", systemImage: "arrow.up.arrow.down")
+                    NavigationLink(destination: FruitView(fruit: nil)) {
+                        Image(systemName: "plus")
                     }
-                    .disabled(DataStore.shared.isLoading)
+                    .disabled(dataStore.isLoading)
                 }
             }
+        }
+        .environmentObject(dataStore)
+        .task {
+            dataStore.retrieveAllFruits()
         }
     }
     
@@ -40,5 +46,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone 12 mini")
     }
 }

@@ -31,7 +31,7 @@ struct Agent {
             .tryMap { result -> Void in
                 guard
                     let httpResponse = result.response as? HTTPURLResponse,
-                    httpResponse.statusCode == 200 else
+                    [200, 201].contains(httpResponse.statusCode) else
                 {
                     throw URLError(.badServerResponse)
                 }
